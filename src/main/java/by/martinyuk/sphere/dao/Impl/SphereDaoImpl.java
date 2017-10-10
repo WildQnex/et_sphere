@@ -1,14 +1,15 @@
-package by.martinyuk.et_sphere.dao.Impl;
+package by.martinyuk.sphere.dao.Impl;
 
-import by.martinyuk.et_sphere.dao.SphereDao;
-import by.martinyuk.et_sphere.entity.Sphere;
+import by.martinyuk.sphere.dao.SphereDao;
+import by.martinyuk.sphere.entity.Sphere;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SphereDaoImpl implements SphereDao {
     @Override
     public List<Sphere> getAll() {
-        return null;
+        return new ArrayList<>();
     }
 
     @Override

@@ -1,17 +1,14 @@
 package by.martinyuk.et_shape.dao;
 
-import by.martinyuk.et_sphere.action.SphereAction;
-import by.martinyuk.et_sphere.dao.FileDao;
-import by.martinyuk.et_sphere.dao.exception.DaoException;
-import by.martinyuk.et_sphere.entity.Point;
-import by.martinyuk.et_sphere.entity.Sphere;
+import by.martinyuk.sphere.dao.FileDao;
+import by.martinyuk.sphere.dao.exception.DaoException;
 import org.testng.annotations.*;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static by.martinyuk.et_sphere.dao.FileDao.getData;
+import static by.martinyuk.sphere.dao.FileDao.getData;
 import static org.testng.Assert.*;
 
 public class FileDaoTest {

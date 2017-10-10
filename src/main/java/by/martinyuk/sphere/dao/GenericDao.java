@@ -1,4 +1,4 @@
-package by.martinyuk.et_sphere.dao;
+package by.martinyuk.sphere.dao;
 
 import java.util.List;
 

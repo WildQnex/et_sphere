@@ -1,6 +1,6 @@
-package by.martinyuk.et_sphere.dao;
+package by.martinyuk.sphere.dao;
 
-import by.martinyuk.et_sphere.entity.Sphere;
+import by.martinyuk.sphere.entity.Sphere;
 
 import java.util.List;
 

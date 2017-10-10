@@ -1,12 +1,16 @@
-package by.martinyuk.et_sphere.dao;
+package by.martinyuk.sphere.dao;
 
-import by.martinyuk.et_sphere.dao.exception.DaoException;
+import by.martinyuk.sphere.dao.exception.DaoException;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FileDao {
+
+    private FileDao(){
+
+    }
 
     public static List<String> getData(String filePath) throws DaoException {
         List<String> list = new ArrayList<>();

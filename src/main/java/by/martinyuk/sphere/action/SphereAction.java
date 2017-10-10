@@ -1,27 +1,45 @@
-package by.martinyuk.et_sphere.action;
+package by.martinyuk.sphere.action;
 
-import by.martinyuk.et_sphere.entity.AbstractShape;
-import by.martinyuk.et_sphere.entity.Sphere;
+import by.martinyuk.sphere.entity.AbstractShape;
+import by.martinyuk.sphere.entity.Sphere;
 
 public class SphereAction {
 
-    public static double calculateSurfaceArea(Sphere sphere){
+    private SphereAction() {
+    }
+
+    public static SphereAction getInstance(){
+        return SingletonHolder.INSTANCE;
+    }
+
+    private static class SingletonHolder{
+        private static final SphereAction INSTANCE;
+        static {
+            try {
+                INSTANCE = new SphereAction();
+            } catch (Exception e) {
+                throw new ExceptionInInitializerError(e);
+            }
+        }
+    }
+
+    public double calculateSurfaceArea(Sphere sphere){
         return 4 * Math.PI * Math.pow(sphere.getRadius(), 2);
     }
 
-    public static double calculateSurfaceArea(double radius){
+    public double calculateSurfaceArea(double radius){
         return 4 * Math.PI * Math.pow(radius, 2);
     }
 
-    public static double calculateVolume(Sphere sphere){
+    public double calculateVolume(Sphere sphere){
         return 4 * Math.PI * Math.pow(sphere.getRadius(), 3) / 3;
     }
 
-    public static double calculateVolume(double radius){
+    public double calculateVolume(double radius){
         return 4 * Math.PI * Math.pow(radius, 3) / 3;
     }
 
-    public static boolean isSphere(AbstractShape shape){
+    public boolean isSphere(AbstractShape shape){
         if(shape instanceof Sphere){
             return ((Sphere) shape).getRadius() > 0;
         }else{
@@ -29,19 +47,19 @@ public class SphereAction {
         }
     }
 
-    public static boolean isSphereTouchesPlaneXY(Sphere sphere){
+    public boolean isSphereTouchesPlaneXY(Sphere sphere){
         return Math.abs(sphere.getCenter().getZ()) == 0;
     }
 
-    public static boolean isSphereTouchesPlaneXZ(Sphere sphere){
+    public boolean isSphereTouchesPlaneXZ(Sphere sphere){
         return Math.abs(sphere.getCenter().getY()) == 0;
     }
 
-    public static boolean isSphereTouchesPlaneYZ(Sphere sphere){
+    public boolean isSphereTouchesPlaneYZ(Sphere sphere){
         return Math.abs(sphere.getCenter().getX()) == 0;
     }
 
-    public static double volumeRatioRelativelyPlaneXY(Sphere sphere){
+    public double volumeRatioRelativelyPlaneXY(Sphere sphere){
 
         if (Math.abs(sphere.getCenter().getZ()) - sphere.getRadius() >= 0){
             if(sphere.getCenter().getZ() > 0) {
@@ -54,7 +72,7 @@ public class SphereAction {
         return calculateSegmentRatio(sphere.getCenter().getZ(), sphere.getRadius());
     }
 
-    public static double volumeRatioRelativelyPlaneXZ(Sphere sphere){
+    public double volumeRatioRelativelyPlaneXZ(Sphere sphere){
 
         if (Math.abs(sphere.getCenter().getY()) - sphere.getRadius() >= 0){
             if(sphere.getCenter().getY() > 0) {
@@ -67,7 +85,7 @@ public class SphereAction {
         return calculateSegmentRatio(sphere.getCenter().getY(), sphere.getRadius());
     }
 
-    public static double volumeRatioRelativelyPlaneYZ(Sphere sphere){
+    public double volumeRatioRelativelyPlaneYZ(Sphere sphere){
 
         if (Math.abs(sphere.getCenter().getX()) - sphere.getRadius() >= 0){
             if(sphere.getCenter().getX() > 0) {
@@ -80,7 +98,7 @@ public class SphereAction {
         return calculateSegmentRatio(sphere.getCenter().getX(), sphere.getRadius());
     }
 
-    private static double calculateSegmentRatio(double center, double radius){
+    private double calculateSegmentRatio(double center, double radius){
 
         double positiveHeight;
 

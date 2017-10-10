@@ -1,4 +1,4 @@
-package by.martinyuk.et_sphere.entity;
+package by.martinyuk.sphere.entity;
 
 public class Sphere extends AbstractShape {
 
@@ -6,11 +6,13 @@ public class Sphere extends AbstractShape {
     private double radius;
 
     public Sphere(Point center, double radius){
+        super(2);
         this.center = center;
         this.radius = radius;
     }
 
     public Sphere(double centerX, double centerY, double centerZ, double radius){
+        super(1);
         this.center = new Point(centerX, centerY, centerZ);
         this.radius = radius;
     }

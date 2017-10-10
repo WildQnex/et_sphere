@@ -1,4 +1,4 @@
-package by.martinyuk.et_sphere.dao.exception;
+package by.martinyuk.sphere.dao.exception;
 
 public class DaoException extends Exception {
 

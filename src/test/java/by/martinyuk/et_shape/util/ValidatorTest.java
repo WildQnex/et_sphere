@@ -1,6 +1,6 @@
 package by.martinyuk.et_shape.util;
 
-import by.martinyuk.et_sphere.util.Validator;
+import by.martinyuk.sphere.util.Validator;
 import org.testng.annotations.*;
 
 import static org.testng.Assert.*;

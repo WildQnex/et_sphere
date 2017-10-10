@@ -1,4 +1,4 @@
-package by.martinyuk.et_sphere.entity;
+package by.martinyuk.sphere.entity;
 
 public class Point extends AbstractShape {
 
@@ -7,6 +7,7 @@ public class Point extends AbstractShape {
     private double z;
 
     public Point(double x, double y, double z){
+        super(1);
         this.x = x;
         this.y = y;
         this.z = z;
