@@ -5,6 +5,8 @@ import by.martinyuk.sphere.entity.Sphere;
 
 public class Parser {
 
+    private Parser(){}
+
     public static Sphere parseSphereLine(String line){
         line = line.trim();
         String[] numbersString = line.split(",");

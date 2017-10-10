@@ -19,9 +19,9 @@ public class SphereDaoImpl implements SphereDao {
     public Sphere read(long id) {
         List<Sphere> spheres = cache.getSpheres();
         return spheres.stream()
-                .filter(sphere -> sphere.getId() == id)
+                .filter(s-> s.getId() == id)
                 .findAny()
-                .get();
+                .orElse(null);
     }
 
     @Override
