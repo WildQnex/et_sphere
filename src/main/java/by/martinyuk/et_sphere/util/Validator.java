@@ -4,11 +4,12 @@ import java.util.regex.Pattern;
 
 public class Validator {
 
-    private final static Pattern COORDINATE_REGEX = Pattern.compile("-?[0-9]{1,4}.[0-9]{1,4}");
-    private final static Pattern RADIUS_REGEX = Pattern.compile("[0-9]{1,4}.[0-9]{1,4}");
+    private static final Pattern COORDINATE_REGEX = Pattern.compile("-?[0-9]{1,4}.[0-9]{1,4}");
+    private static final Pattern RADIUS_REGEX = Pattern.compile("[0-9]{1,4}.[0-9]{1,4}");
 
-    public static boolean validateLine(String line){
-        String[] numbers = line.split(" ");
+    public static boolean validateSphereLine(String line){
+        line = line.trim();
+        String[] numbers = line.split(",");
 
         if(numbers.length != 4){
             return false;

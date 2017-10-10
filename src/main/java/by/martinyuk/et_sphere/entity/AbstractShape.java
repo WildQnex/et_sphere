@@ -1,4 +1,5 @@
 package by.martinyuk.et_sphere.entity;
 
-public class AbstractShape {
+public abstract class AbstractShape {
+    private long id;
 }

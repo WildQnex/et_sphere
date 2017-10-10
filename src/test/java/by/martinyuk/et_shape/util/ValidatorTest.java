@@ -18,37 +18,37 @@ public class ValidatorTest {
     @BeforeClass
     public void setup(){
 
-        validLine1 = "12.4 542.1 34.1 12.24";
-        validLine2 = "-12.4 542.1 -34.1 12.24";
+        validLine1 = "12.4,542.1,34.1,12.24";
+        validLine2 = "-12.4,542.1,-34.1,12.24";
 
-        invalidLine1 = "12.z4 542.1 34.1 12.24";
-        invalidLine2 = "12.4 542.1 -34.1 12.24 41.1";
-        invalidLine3 = "12.4 542.1 34.1 -12.24";
+        invalidLine1 = "12.z4,542.1,34.1,12.24";
+        invalidLine2 = "12.4,542.1,-34.1,12.24,41.1";
+        invalidLine3 = "12.4,542.1,34.1,-12.24";
 
     }
 
     @Test
     public void validateLineTest(){
-        assertTrue(Validator.validateLine(validLine1));
+        assertTrue(Validator.validateSphereLine(validLine1));
     }
 
     @Test
     public void validateLineNegativeNumbersTest(){
-        assertTrue(Validator.validateLine(validLine2));
+        assertTrue(Validator.validateSphereLine(validLine2));
     }
 
     @Test
     public void validateLineInvalidSymbolsTest(){
-        assertFalse(Validator.validateLine(invalidLine1));
+        assertFalse(Validator.validateSphereLine(invalidLine1));
     }
 
     @Test
     public void validateLineInvalidParametersAmountTest(){
-        assertFalse(Validator.validateLine(invalidLine2));
+        assertFalse(Validator.validateSphereLine(invalidLine2));
     }
 
     @Test
     public void validateLineInvalidNegativeRadiusTest(){
-        assertFalse(Validator.validateLine(invalidLine3));
+        assertFalse(Validator.validateSphereLine(invalidLine3));
     }
 }

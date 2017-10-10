@@ -23,6 +23,10 @@ public class Sphere extends AbstractShape {
         return radius;
     }
 
+    public double getDiametr() {
+        return radius * 2;
+    }
+
     public void setCenter(Point center) {
         this.center = center;
     }
@@ -54,7 +58,7 @@ public class Sphere extends AbstractShape {
 
     @Override
     public String toString() {
-        return "Sphere (Central " + center +
+        return "SphereAction (Central " + center +
                 ", radius = " + radius + ')';
     }
 }
