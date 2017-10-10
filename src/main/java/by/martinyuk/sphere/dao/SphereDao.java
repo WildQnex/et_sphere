@@ -9,10 +9,10 @@ public interface SphereDao extends GenericDao<Sphere>{
     List<Sphere> getAll();
 
     @Override
-    Sphere getEntityById(long id);
+    Sphere read(long id);
 
     @Override
-    Sphere update(Sphere entity);
+    boolean update(Sphere entity);
 
     @Override
     boolean delete(long id);

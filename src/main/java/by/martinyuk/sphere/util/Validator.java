@@ -28,6 +28,23 @@ public class Validator {
         return validateRadius(numbers[3]);
     }
 
+    public static boolean validatePointLine(String line){
+        line = line.trim();
+        String[] numbers = line.split(",");
+
+        if(numbers.length != 3){
+            return false;
+        }
+
+        for(int i = 0; i < 3; i++){
+            if(!validateCoordinate(numbers[i])){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     private static boolean validateCoordinate(String num){
         return COORDINATE_REGEX.matcher(num).matches();
     }

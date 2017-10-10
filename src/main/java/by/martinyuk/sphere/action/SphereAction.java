@@ -12,31 +12,12 @@ public class SphereAction {
         return SingletonHolder.INSTANCE;
     }
 
-    private static class SingletonHolder{
-        private static final SphereAction INSTANCE;
-        static {
-            try {
-                INSTANCE = new SphereAction();
-            } catch (Exception e) {
-                throw new ExceptionInInitializerError(e);
-            }
-        }
-    }
-
-    public double calculateSurfaceArea(Sphere sphere){
+    public double calculateSurfaceArea(Sphere sphere) {
         return 4 * Math.PI * Math.pow(sphere.getRadius(), 2);
-    }
-
-    public double calculateSurfaceArea(double radius){
-        return 4 * Math.PI * Math.pow(radius, 2);
     }
 
     public double calculateVolume(Sphere sphere){
         return 4 * Math.PI * Math.pow(sphere.getRadius(), 3) / 3;
-    }
-
-    public double calculateVolume(double radius){
-        return 4 * Math.PI * Math.pow(radius, 3) / 3;
     }
 
     public boolean isSphere(AbstractShape shape){
@@ -48,15 +29,15 @@ public class SphereAction {
     }
 
     public boolean isSphereTouchesPlaneXY(Sphere sphere){
-        return Math.abs(sphere.getCenter().getZ()) == 0;
+        return Math.abs(sphere.getCenter().getZ() - sphere.getRadius()) == 0;
     }
 
     public boolean isSphereTouchesPlaneXZ(Sphere sphere){
-        return Math.abs(sphere.getCenter().getY()) == 0;
+        return Math.abs(sphere.getCenter().getY() - sphere.getRadius()) == 0;
     }
 
     public boolean isSphereTouchesPlaneYZ(Sphere sphere){
-        return Math.abs(sphere.getCenter().getX()) == 0;
+        return Math.abs(sphere.getCenter().getX() - sphere.getRadius()) == 0;
     }
 
     public double volumeRatioRelativelyPlaneXY(Sphere sphere){
@@ -111,5 +92,20 @@ public class SphereAction {
         double positiveSegmentVolume = Math.PI * Math.pow(positiveHeight, 2) * (radius - positiveHeight / 3);
 
         return positiveSegmentVolume / (calculateVolume(radius) - positiveSegmentVolume);
+    }
+
+    private double calculateVolume(double radius){
+        return 4 * Math.PI * Math.pow(radius, 3) / 3;
+    }
+
+    private static class SingletonHolder{
+        private static final SphereAction INSTANCE;
+        static {
+            try {
+                INSTANCE = new SphereAction();
+            } catch (Exception e) {
+                throw new ExceptionInInitializerError(e);
+            }
+        }
     }
 }

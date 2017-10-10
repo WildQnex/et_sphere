@@ -1,5 +1,7 @@
 package by.martinyuk.sphere.entity;
 
+import by.martinyuk.sphere.util.IdGenerator;
+
 public class Point extends AbstractShape {
 
     private double x;
@@ -7,7 +9,7 @@ public class Point extends AbstractShape {
     private double z;
 
     public Point(double x, double y, double z){
-        super(1);
+        super(IdGenerator.getId());
         this.x = x;
         this.y = y;
         this.z = z;
