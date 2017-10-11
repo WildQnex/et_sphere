@@ -6,7 +6,7 @@ public class IdGenerator {
 
     private IdGenerator(){}
 
-    public static long getId(){
+    public static long nextId(){
         return id++;
     }
 }

@@ -2,14 +2,14 @@ package by.martinyuk.sphere.entity;
 
 import by.martinyuk.sphere.util.IdGenerator;
 
-public class Point extends AbstractShape {
+public class Point extends AbstractEntitiy {
 
     private double x;
     private double y;
     private double z;
 
     public Point(double x, double y, double z){
-        super(IdGenerator.getId());
+        super(IdGenerator.nextId());
         this.x = x;
         this.y = y;
         this.z = z;

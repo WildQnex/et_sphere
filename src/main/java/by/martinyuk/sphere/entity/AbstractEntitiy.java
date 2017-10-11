@@ -1,9 +1,9 @@
 package by.martinyuk.sphere.entity;
 
-public abstract class AbstractShape {
+public abstract class AbstractEntitiy {
     private long id;
 
-    public AbstractShape(long id) {
+    public AbstractEntitiy(long id) {
         this.id = id;
     }
 

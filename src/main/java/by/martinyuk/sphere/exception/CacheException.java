@@ -1,4 +1,4 @@
-package by.martinyuk.sphere.cache.exception;
+package by.martinyuk.sphere.exception;
 
 public class CacheException extends Exception{
     public CacheException() {

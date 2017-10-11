@@ -1,7 +1,7 @@
 package by.martinyuk.sphere.dao;
 
 import by.martinyuk.sphere.cache.Cache;
-import by.martinyuk.sphere.cache.exception.CacheException;
+import by.martinyuk.sphere.exception.CacheException;
 import by.martinyuk.sphere.entity.Sphere;
 import org.testng.annotations.*;
 

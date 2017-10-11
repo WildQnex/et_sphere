@@ -24,15 +24,15 @@ public class SphereDaoImpl implements SphereDao {
                 .orElse(null);
     }
 
-    @Override
-    public boolean update(Sphere entity) {
-        Optional<Sphere> sphere = cache.getSpheres().stream()
-                .filter(s -> s.getId() == entity.getId())
-                .findAny();
-        if(!sphere.isPresent()){
-            return false;
-        }
-        sphere.get().setCenter(entity.getCenter());
+        @Override
+        public boolean update(Sphere entity) {
+            Optional<Sphere> sphere = cache.getSpheres().stream()
+                    .filter(s -> s.getId() == entity.getId())
+                    .findAny();
+            if(!sphere.isPresent()){
+                return false;
+            }
+            sphere.get().setCenter(entity.getCenter());
         sphere.get().setRadius(entity.getRadius());
         return true;
     }

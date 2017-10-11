@@ -1,10 +1,10 @@
 package by.martinyuk.sphere.cache;
 
-import by.martinyuk.sphere.cache.exception.CacheException;
+import by.martinyuk.sphere.exception.CacheException;
 import by.martinyuk.sphere.entity.Point;
 import by.martinyuk.sphere.entity.Sphere;
-import by.martinyuk.sphere.util.Parser;
-import by.martinyuk.sphere.util.Validator;
+import by.martinyuk.sphere.parser.SphereParser;
+import by.martinyuk.sphere.validator.SphereValidator;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -28,8 +28,8 @@ public class Cache {
              BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                if(Validator.validatePointLine(line)){
-                    list.add(Parser.parsePointLine(line));
+                if(SphereValidator.validatePointLine(line)){
+                    list.add(SphereParser.parsePointLine(line));
                 }
             }
         }catch (FileNotFoundException e){
@@ -46,14 +46,14 @@ public class Cache {
              BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                if(Validator.validateSphereLine(line)){
-                    list.add(Parser.parseSphereLine(line));
+                if(SphereValidator.validateSphereLine(line)){
+                    list.add(SphereParser.parseSphereLine(line));
                 }
             }
         }catch (FileNotFoundException e){
-            throw new CacheException("File wasn't found");
+            throw new CacheException("File wasn't found", e);
         } catch (IOException e){
-            throw new CacheException("Can't open file");
+            throw new CacheException("Can't open file", e);
         }
         this.spheres = list;
     }

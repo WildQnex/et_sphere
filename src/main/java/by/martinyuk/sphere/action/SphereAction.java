@@ -1,6 +1,6 @@
 package by.martinyuk.sphere.action;
 
-import by.martinyuk.sphere.entity.AbstractShape;
+import by.martinyuk.sphere.entity.AbstractEntitiy;
 import by.martinyuk.sphere.entity.Sphere;
 
 public class SphereAction {
@@ -20,7 +20,7 @@ public class SphereAction {
         return 4 * Math.PI * Math.pow(sphere.getRadius(), 3) / 3;
     }
 
-    public boolean isSphere(AbstractShape shape){
+    public boolean isSphere(AbstractEntitiy shape){
         if(shape instanceof Sphere){
             return ((Sphere) shape).getRadius() > 0;
         }else{

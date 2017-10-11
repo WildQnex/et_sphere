@@ -1,11 +1,12 @@
 package by.martinyuk.sphere.util;
 
+import by.martinyuk.sphere.validator.SphereValidator;
 import org.testng.annotations.*;
 
 import static org.testng.Assert.*;
 
 
-public class ValidatorTest {
+public class SphereValidatorTest {
 
     private String validLine1;
     private String validLine2;
@@ -28,26 +29,26 @@ public class ValidatorTest {
 
     @Test
     public void validateLineTest(){
-        assertTrue(Validator.validateSphereLine(validLine1));
+        assertTrue(SphereValidator.validateSphereLine(validLine1));
     }
 
     @Test
     public void validateLineNegativeNumbersTest(){
-        assertTrue(Validator.validateSphereLine(validLine2));
+        assertTrue(SphereValidator.validateSphereLine(validLine2));
     }
 
     @Test
     public void validateLineInvalidSymbolsTest(){
-        assertFalse(Validator.validateSphereLine(invalidLine1));
+        assertFalse(SphereValidator.validateSphereLine(invalidLine1));
     }
 
     @Test
     public void validateLineInvalidParametersAmountTest(){
-        assertFalse(Validator.validateSphereLine(invalidLine2));
+        assertFalse(SphereValidator.validateSphereLine(invalidLine2));
     }
 
     @Test
     public void validateLineInvalidNegativeRadiusTest(){
-        assertFalse(Validator.validateSphereLine(invalidLine3));
+        assertFalse(SphereValidator.validateSphereLine(invalidLine3));
     }
 }

@@ -1,13 +1,13 @@
-package by.martinyuk.sphere.util;
+package by.martinyuk.sphere.validator;
 
 import java.util.regex.Pattern;
 
-public class Validator {
+public class SphereValidator {
 
     private static final Pattern COORDINATE_REGEX = Pattern.compile("-?[0-9]{1,4}.[0-9]{1,4}");
     private static final Pattern RADIUS_REGEX = Pattern.compile("[0-9]{1,4}.[0-9]{1,4}");
 
-    private Validator(){
+    private SphereValidator(){
 
     }
 

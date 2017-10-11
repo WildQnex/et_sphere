@@ -1,11 +1,11 @@
-package by.martinyuk.sphere.util;
+package by.martinyuk.sphere.parser;
 
 import by.martinyuk.sphere.entity.Point;
 import by.martinyuk.sphere.entity.Sphere;
 
-public class Parser {
+public class SphereParser {
 
-    private Parser(){}
+    private SphereParser(){}
 
     public static Sphere parseSphereLine(String line){
         line = line.trim();
