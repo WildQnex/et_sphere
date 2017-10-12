@@ -2,7 +2,8 @@ package by.martinyuk.sphere.action;
 
 import by.martinyuk.sphere.entity.Point;
 import by.martinyuk.sphere.entity.Sphere;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
 
@@ -21,8 +22,8 @@ public class SphereActionTest {
     private SphereAction action = SphereAction.getInstance();
 
     @BeforeClass
-    public void setup(){
-        point1 = new Point(3,3, 3);
+    public void setup() {
+        point1 = new Point(3, 3, 3);
         accuracy = 0.00001;
         value1 = 113.09733552923255;
         sphere1 = new Sphere(point1, 3);
@@ -30,47 +31,47 @@ public class SphereActionTest {
     }
 
     @Test
-    public void calculateVolumeTrueTest(){
+    public void calculateVolumeTrueTest() {
         assertEquals(action.calculateVolume(sphere1), value1, accuracy);
     }
 
     @Test
-    public void calculateVolumeNotEqualsTest(){
+    public void calculateVolumeNotEqualsTest() {
         assertNotEquals(action.calculateVolume(sphere2), value1, accuracy);
     }
 
     @Test
-    public void calculateSurfaceAreaTrueTest(){
+    public void calculateSurfaceAreaTrueTest() {
         assertEquals(action.calculateSurfaceArea(sphere1), value1, accuracy);
     }
 
     @Test
-    public void calculateSurfaceAreaNotEqualsTest(){
+    public void calculateSurfaceAreaNotEqualsTest() {
         assertNotEquals(action.calculateSurfaceArea(sphere2), value1, accuracy);
     }
 
     @Test
-    public void isSphereTrueTest(){
+    public void isSphereTrueTest() {
         assertTrue(action.isSphere(sphere1));
     }
 
     @Test
-    public void isSphereFalseTest(){
+    public void isSphereFalseTest() {
         assertFalse(action.isSphere(point1));
     }
 
     @Test
-    public void isSphereTouchesPlaneXYTrueTest(){
+    public void isSphereTouchesPlaneXYTrueTest() {
         assertTrue(action.isSphereTouchesPlaneXY(sphere1));
     }
 
     @Test
-    public void isSphereTouchesPlaneXYFalseTest(){
+    public void isSphereTouchesPlaneXYFalseTest() {
         assertFalse(action.isSphereTouchesPlaneXY(sphere2));
     }
 
     @Test
-    public void isSphereTouchesPlaneXZTrueTest(){
+    public void isSphereTouchesPlaneXZTrueTest() {
         assertTrue(action.isSphereTouchesPlaneXZ(sphere1));
     }
 
@@ -80,7 +81,7 @@ public class SphereActionTest {
     }
 
     @Test
-    public void isSphereTouchesPlaneYZTrueTest(){
+    public void isSphereTouchesPlaneYZTrueTest() {
         assertTrue(action.isSphereTouchesPlaneYZ(sphere1));
     }
 

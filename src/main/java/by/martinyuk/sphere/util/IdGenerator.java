@@ -4,9 +4,10 @@ public class IdGenerator {
 
     private static long id = 1;
 
-    private IdGenerator(){}
+    private IdGenerator() {
+    }
 
-    public static long nextId(){
+    public static long nextId() {
         return id++;
     }
 }

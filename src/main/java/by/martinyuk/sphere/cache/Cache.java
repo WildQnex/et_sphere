@@ -1,75 +1,85 @@
 package by.martinyuk.sphere.cache;
 
-import by.martinyuk.sphere.exception.CacheException;
 import by.martinyuk.sphere.entity.Point;
 import by.martinyuk.sphere.entity.Sphere;
-import by.martinyuk.sphere.parser.SphereParser;
-import by.martinyuk.sphere.validator.SphereValidator;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 
 public class Cache {
 
     private List<Sphere> spheres;
-    private List<Point> points;
 
-    private Cache(){
+    private Cache() {
+        spheres = new ArrayList<>();
+        spheres.add(new Sphere(new Point(1, 2, 3), 6));
+        spheres.add(new Sphere(new Point(2, 4, 2), 1));
     }
 
-    public static Cache getInstance(){
+
+    public static Cache getInstance() {
         return Cache.SingletonHolder.INSTANCE;
     }
 
-    public void  readPoints(String filePath) throws CacheException {
-        List<Point> list = new ArrayList<>();
-        try (FileInputStream fis = new FileInputStream(filePath);
-             BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if(SphereValidator.validatePointLine(line)){
-                    list.add(SphereParser.parsePointLine(line));
-                }
-            }
-        }catch (FileNotFoundException e){
-            throw new CacheException("File wasn't found");
-        } catch (IOException e){
-            throw new CacheException("Can't open file");
+
+    public List<Sphere> getAll() {
+        return spheres.stream()
+                .map(Sphere::clone)
+                .collect(Collectors.toList());
+    }
+
+
+    public Optional<Sphere> getById(long id) {
+        return spheres.stream()
+                .filter(s -> s.getId() == id)
+                .map(Sphere::clone)
+                .findAny();
+    }
+
+    public boolean update(Sphere entity) {
+        Optional<Sphere> sphere = spheres.stream()
+                .filter(s -> s.getId() == entity.getId())
+                .findAny();
+        if (!sphere.isPresent()) {
+            return false;
         }
-        this.points = list;
+        sphere.get().setCenter(entity.getCenter());
+        sphere.get().setRadius(entity.getRadius());
+        return true;
     }
 
-    public void readSpheres(String filePath) throws CacheException {
-        List<Sphere> list = new ArrayList<>();
-        try (FileInputStream fis = new FileInputStream(filePath);
-             BufferedReader reader = new BufferedReader(new InputStreamReader(fis))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if(SphereValidator.validateSphereLine(line)){
-                    list.add(SphereParser.parseSphereLine(line));
-                }
-            }
-        }catch (FileNotFoundException e){
-            throw new CacheException("File wasn't found", e);
-        } catch (IOException e){
-            throw new CacheException("Can't open file", e);
+    public boolean delete(long id) {
+        Optional<Sphere> sphere = spheres.stream()
+                .filter(s -> s.getId() == id)
+                .findAny();
+        if (!sphere.isPresent()) {
+            return false;
         }
-        this.spheres = list;
+        spheres.remove(sphere.get());
+        return true;
     }
 
-    public List<Sphere> getSpheres() {
-        return this.spheres;
+    public boolean create(Sphere entity) {
+        Optional<Sphere> sphere = spheres.stream()
+                .filter(s -> s.getId() == entity.getId())
+                .findAny();
+        if (sphere.isPresent()) {
+            return false;
+        }
+        spheres.add(entity);
+        return true;
     }
 
-    public List<Point> getPoints(){
-        return this.points;
-    }
-
-    private static class SingletonHolder{
+    private static class SingletonHolder {
         private static final Cache INSTANCE;
+
         static {
             try {
+                Object obj = new Object();
+
                 INSTANCE = new Cache();
             } catch (Exception e) {
                 throw new ExceptionInInitializerError(e);

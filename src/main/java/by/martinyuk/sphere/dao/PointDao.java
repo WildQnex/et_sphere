@@ -3,14 +3,15 @@ package by.martinyuk.sphere.dao;
 import by.martinyuk.sphere.entity.Point;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PointDao extends GenericDao<Point> {
 
     @Override
-    List<Point> getAll();
+    List<Point> readAll();
 
     @Override
-    Point read(long id);
+    Optional<Point> readById(long id);
 
     @Override
     boolean update(Point entity);

@@ -1,6 +1,6 @@
 package by.martinyuk.sphere.exception;
 
-public class CacheException extends Exception{
+public class CacheException extends Exception {
     public CacheException() {
     }
 

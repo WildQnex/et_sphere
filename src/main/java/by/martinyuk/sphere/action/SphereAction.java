@@ -1,6 +1,6 @@
 package by.martinyuk.sphere.action;
 
-import by.martinyuk.sphere.entity.AbstractEntitiy;
+import by.martinyuk.sphere.entity.AbstractEntity;
 import by.martinyuk.sphere.entity.Sphere;
 
 public class SphereAction {
@@ -8,7 +8,7 @@ public class SphereAction {
     private SphereAction() {
     }
 
-    public static SphereAction getInstance(){
+    public static SphereAction getInstance() {
         return SingletonHolder.INSTANCE;
     }
 
@@ -16,34 +16,34 @@ public class SphereAction {
         return 4 * Math.PI * Math.pow(sphere.getRadius(), 2);
     }
 
-    public double calculateVolume(Sphere sphere){
+    public double calculateVolume(Sphere sphere) {
         return 4 * Math.PI * Math.pow(sphere.getRadius(), 3) / 3;
     }
 
-    public boolean isSphere(AbstractEntitiy shape){
-        if(shape instanceof Sphere){
+    public boolean isSphere(AbstractEntity shape) {
+        if (shape instanceof Sphere) {
             return ((Sphere) shape).getRadius() > 0;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public boolean isSphereTouchesPlaneXY(Sphere sphere){
-        return Math.abs(sphere.getCenter().getZ() - sphere.getRadius()) == 0;
+    public boolean isSphereTouchesPlaneXY(Sphere sphere) {
+        return Math.abs(sphere.getCenter().getZ()) - sphere.getRadius() == 0;
     }
 
-    public boolean isSphereTouchesPlaneXZ(Sphere sphere){
-        return Math.abs(sphere.getCenter().getY() - sphere.getRadius()) == 0;
+    public boolean isSphereTouchesPlaneXZ(Sphere sphere) {
+        return Math.abs(sphere.getCenter().getY()) - sphere.getRadius() == 0;
     }
 
-    public boolean isSphereTouchesPlaneYZ(Sphere sphere){
-        return Math.abs(sphere.getCenter().getX() - sphere.getRadius()) == 0;
+    public boolean isSphereTouchesPlaneYZ(Sphere sphere) {
+        return Math.abs(sphere.getCenter().getX()) - sphere.getRadius() == 0;
     }
 
-    public double volumeRatioRelativelyPlaneXY(Sphere sphere){
+    public double volumeRatioRelativelyPlaneXY(Sphere sphere) {
 
-        if (Math.abs(sphere.getCenter().getZ()) - sphere.getRadius() >= 0){
-            if(sphere.getCenter().getZ() > 0) {
+        if (Math.abs(sphere.getCenter().getZ()) - sphere.getRadius() >= 0) {
+            if (sphere.getCenter().getZ() > 0) {
                 return 0;
             } else {
                 return -1;
@@ -53,10 +53,10 @@ public class SphereAction {
         return calculateSegmentRatio(sphere.getCenter().getZ(), sphere.getRadius());
     }
 
-    public double volumeRatioRelativelyPlaneXZ(Sphere sphere){
+    public double volumeRatioRelativelyPlaneXZ(Sphere sphere) {
 
-        if (Math.abs(sphere.getCenter().getY()) - sphere.getRadius() >= 0){
-            if(sphere.getCenter().getY() > 0) {
+        if (Math.abs(sphere.getCenter().getY()) - sphere.getRadius() >= 0) {
+            if (sphere.getCenter().getY() > 0) {
                 return 0;
             } else {
                 return -1;
@@ -66,10 +66,10 @@ public class SphereAction {
         return calculateSegmentRatio(sphere.getCenter().getY(), sphere.getRadius());
     }
 
-    public double volumeRatioRelativelyPlaneYZ(Sphere sphere){
+    public double volumeRatioRelativelyPlaneYZ(Sphere sphere) {
 
-        if (Math.abs(sphere.getCenter().getX()) - sphere.getRadius() >= 0){
-            if(sphere.getCenter().getX() > 0) {
+        if (Math.abs(sphere.getCenter().getX()) - sphere.getRadius() >= 0) {
+            if (sphere.getCenter().getX() > 0) {
                 return 0;
             } else {
                 return -1;
@@ -79,11 +79,11 @@ public class SphereAction {
         return calculateSegmentRatio(sphere.getCenter().getX(), sphere.getRadius());
     }
 
-    private double calculateSegmentRatio(double center, double radius){
+    private double calculateSegmentRatio(double center, double radius) {
 
         double positiveHeight;
 
-        if(center > 0){
+        if (center > 0) {
             positiveHeight = radius + center;
         } else {
             positiveHeight = radius - center;
@@ -94,12 +94,13 @@ public class SphereAction {
         return positiveSegmentVolume / (calculateVolume(radius) - positiveSegmentVolume);
     }
 
-    private double calculateVolume(double radius){
+    private double calculateVolume(double radius) {
         return 4 * Math.PI * Math.pow(radius, 3) / 3;
     }
 
-    private static class SingletonHolder{
+    private static class SingletonHolder {
         private static final SphereAction INSTANCE;
+
         static {
             try {
                 INSTANCE = new SphereAction();

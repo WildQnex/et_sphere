@@ -2,13 +2,24 @@ package by.martinyuk.sphere.entity;
 
 import by.martinyuk.sphere.util.IdGenerator;
 
-public class Point extends AbstractEntitiy {
+public class Point extends AbstractEntity {
+
+    @Override
+    public Point clone() {
+        Point clone;
+        try {
+            clone = (Point) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+        return clone;
+    }
 
     private double x;
     private double y;
     private double z;
 
-    public Point(double x, double y, double z){
+    public Point(double x, double y, double z) {
         super(IdGenerator.nextId());
         this.x = x;
         this.y = y;

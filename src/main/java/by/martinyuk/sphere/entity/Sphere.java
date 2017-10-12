@@ -2,18 +2,30 @@ package by.martinyuk.sphere.entity;
 
 import by.martinyuk.sphere.util.IdGenerator;
 
-public class Sphere extends AbstractEntitiy {
+public class Sphere extends AbstractEntity {
+
+    @Override
+    public Sphere clone() {
+        Sphere clone;
+        try {
+            clone = (Sphere) super.clone();
+            clone.center = center.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("Clone not supported Exception", e);
+        }
+        return clone;
+    }
 
     private Point center;
     private double radius;
 
-    public Sphere(Point center, double radius){
+    public Sphere(Point center, double radius) {
         super(IdGenerator.nextId());
         this.center = center;
         this.radius = radius;
     }
 
-    public Sphere(double centerX, double centerY, double centerZ, double radius){
+    public Sphere(double centerX, double centerY, double centerZ, double radius) {
         super(IdGenerator.nextId());
         this.center = new Point(centerX, centerY, centerZ);
         this.radius = radius;
