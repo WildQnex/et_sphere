@@ -1,20 +1,13 @@
 package by.martinyuk.sphere.entity;
 
 import by.martinyuk.sphere.util.IdGenerator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Sphere extends AbstractEntity {
 
-    @Override
-    public Sphere clone() {
-        Sphere clone;
-        try {
-            clone = (Sphere) super.clone();
-            clone.center = center.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new RuntimeException("Clone not supported Exception", e);
-        }
-        return clone;
-    }
+    private static final Logger LOGGER = LogManager.getLogger(Sphere.class);
+    private static final int DIAMETER_COEFFICIENT = 2;
 
     private Point center;
     private double radius;
@@ -39,8 +32,8 @@ public class Sphere extends AbstractEntity {
         return radius;
     }
 
-    public double getDiametr() {
-        return radius * 2;
+    public double getDiameter() {
+        return radius * DIAMETER_COEFFICIENT;
     }
 
     public void setCenter(Point center) {
@@ -49,6 +42,14 @@ public class Sphere extends AbstractEntity {
 
     public void setRadius(double radius) {
         this.radius = radius;
+    }
+
+    @Override
+    public Sphere clone() throws CloneNotSupportedException {
+        Sphere clone;
+        clone = (Sphere) super.clone();
+        clone.center = center.clone();
+        return clone;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package by.martinyuk.sphere.dao.impl;
 
-import by.martinyuk.sphere.cache.Cache;
+import by.martinyuk.sphere.cache.SphereCache;
 import by.martinyuk.sphere.dao.SphereDao;
 import by.martinyuk.sphere.entity.Sphere;
 
@@ -9,30 +9,30 @@ import java.util.Optional;
 
 public class SphereDaoImpl implements SphereDao {
 
-    private Cache cache = Cache.getInstance();
+    private SphereCache sphereCache = SphereCache.getInstance();
 
     @Override
     public List<Sphere> readAll() {
-        return cache.getAll();
+        return sphereCache.getAll();
     }
 
     @Override
     public Optional<Sphere> readById(long id) {
-        return cache.getById(id);
+        return sphereCache.getById(id);
     }
 
     @Override
     public boolean update(Sphere entity) {
-        return cache.update(entity);
+        return sphereCache.update(entity);
     }
 
     @Override
     public boolean delete(long id) {
-        return cache.delete(id);
+        return sphereCache.delete(id);
     }
 
     @Override
     public boolean create(Sphere entity) {
-        return cache.create(entity);
+        return sphereCache.create(entity);
     }
 }

@@ -3,6 +3,7 @@ package by.martinyuk.sphere.action;
 import by.martinyuk.sphere.entity.AbstractEntity;
 import by.martinyuk.sphere.entity.Sphere;
 
+
 public class SphereAction {
 
     private SphereAction() {
@@ -29,15 +30,15 @@ public class SphereAction {
     }
 
     public boolean isSphereTouchesPlaneXY(Sphere sphere) {
-        return Math.abs(sphere.getCenter().getZ()) - sphere.getRadius() == 0;
+        return Math.abs(sphere.getCenter().getZ()) == sphere.getRadius();
     }
 
     public boolean isSphereTouchesPlaneXZ(Sphere sphere) {
-        return Math.abs(sphere.getCenter().getY()) - sphere.getRadius() == 0;
+        return Math.abs(sphere.getCenter().getY()) == sphere.getRadius();
     }
 
     public boolean isSphereTouchesPlaneYZ(Sphere sphere) {
-        return Math.abs(sphere.getCenter().getX()) - sphere.getRadius() == 0;
+        return Math.abs(sphere.getCenter().getX()) == sphere.getRadius();
     }
 
     public double volumeRatioRelativelyPlaneXY(Sphere sphere) {
