@@ -19,6 +19,10 @@ public class Point extends AbstractEntity {
     private double y;
     private double z;
 
+    public Point() {
+        super(IdGenerator.nextId());
+    }
+
     public Point(double x, double y, double z) {
         super(IdGenerator.nextId());
         this.x = x;

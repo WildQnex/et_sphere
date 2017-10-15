@@ -12,6 +12,10 @@ public class Sphere extends AbstractEntity {
     private Point center;
     private double radius;
 
+    public Sphere() {
+        super(IdGenerator.nextId());
+    }
+
     public Sphere(Point center, double radius) {
         super(IdGenerator.nextId());
         this.center = center;
@@ -46,8 +50,7 @@ public class Sphere extends AbstractEntity {
 
     @Override
     public Sphere clone() throws CloneNotSupportedException {
-        Sphere clone;
-        clone = (Sphere) super.clone();
+        Sphere clone = (Sphere) super.clone();
         clone.center = center.clone();
         return clone;
     }
@@ -75,7 +78,7 @@ public class Sphere extends AbstractEntity {
 
     @Override
     public String toString() {
-        return "SphereAction (Central " + center +
+        return "SphereCalculateAction (Central " + center +
                 ", radius = " + radius + ')';
     }
 }

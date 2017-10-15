@@ -1,15 +1,14 @@
 package by.martinyuk.sphere.action;
 
-import by.martinyuk.sphere.entity.AbstractEntity;
 import by.martinyuk.sphere.entity.Sphere;
 
 
-public class SphereAction {
+public class SphereCalculateAction {
 
-    private SphereAction() {
+    private SphereCalculateAction() {
     }
 
-    public static SphereAction getInstance() {
+    public static SphereCalculateAction getInstance() {
         return SingletonHolder.INSTANCE;
     }
 
@@ -19,26 +18,6 @@ public class SphereAction {
 
     public double calculateVolume(Sphere sphere) {
         return 4 * Math.PI * Math.pow(sphere.getRadius(), 3) / 3;
-    }
-
-    public boolean isSphere(AbstractEntity shape) {
-        if (shape instanceof Sphere) {
-            return ((Sphere) shape).getRadius() > 0;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean isSphereTouchesPlaneXY(Sphere sphere) {
-        return Math.abs(sphere.getCenter().getZ()) == sphere.getRadius();
-    }
-
-    public boolean isSphereTouchesPlaneXZ(Sphere sphere) {
-        return Math.abs(sphere.getCenter().getY()) == sphere.getRadius();
-    }
-
-    public boolean isSphereTouchesPlaneYZ(Sphere sphere) {
-        return Math.abs(sphere.getCenter().getX()) == sphere.getRadius();
     }
 
     public double volumeRatioRelativelyPlaneXY(Sphere sphere) {
@@ -100,11 +79,11 @@ public class SphereAction {
     }
 
     private static class SingletonHolder {
-        private static final SphereAction INSTANCE;
+        private static final SphereCalculateAction INSTANCE;
 
         static {
             try {
-                INSTANCE = new SphereAction();
+                INSTANCE = new SphereCalculateAction();
             } catch (Exception e) {
                 throw new ExceptionInInitializerError(e);
             }

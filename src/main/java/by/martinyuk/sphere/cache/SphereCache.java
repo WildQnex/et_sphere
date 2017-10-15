@@ -1,11 +1,10 @@
 package by.martinyuk.sphere.cache;
 
+import by.martinyuk.sphere.creator.SphereCreator;
 import by.martinyuk.sphere.entity.Sphere;
 import by.martinyuk.sphere.exception.CacheException;
 import by.martinyuk.sphere.exception.CacheRuntimeException;
-import by.martinyuk.sphere.exception.FactoryException;
 import by.martinyuk.sphere.exception.FileReaderException;
-import by.martinyuk.sphere.factory.EntityFactory;
 import by.martinyuk.sphere.parser.LineParser;
 import by.martinyuk.sphere.reader.FileReader;
 import by.martinyuk.sphere.validator.LineValidator;
@@ -34,12 +33,14 @@ public class SphereCache {
         spheres = new ArrayList<>();
         try {
             List<String> lines = FileReader.readLines(FILE_PATH);
-            for (String line : lines) {
-                if (LineValidator.validateSphereLine(line)) {
-                    spheres.add((Sphere) EntityFactory.factoryMethod(LineParser.parseLine(line, DELIMITER)));
-                }
-            }
-        } catch (FileReaderException | FactoryException e) {
+            lines.stream()
+                    .filter(LineValidator::validateSphereLine)
+                    .map(l -> {
+                        List<Double> list = LineParser.parseLine(l, DELIMITER);
+                        return SphereCreator.createSphere(list);
+                    })
+                    .forEach(spheres::add);
+        } catch (FileReaderException e) {
             LOGGER.log(Level.ERROR, e.getMessage());
             throw new CacheException(e);
         }
