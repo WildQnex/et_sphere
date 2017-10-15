@@ -11,7 +11,6 @@ import org.martinyuk.sphere.parser.LineParser;
 import org.martinyuk.sphere.reader.FileReader;
 import org.martinyuk.sphere.validator.LineValidator;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -29,16 +28,15 @@ public class SphereCache {
     }
 
     private void init() throws CacheException {
-        spheres = new ArrayList<>();
         try {
             List<String> lines = FileReader.readLines(FILE_PATH);
-            lines.stream()
+            spheres = lines.stream()
                     .filter(LineValidator::validateSphereLine)
                     .map(l -> {
                         List<Double> list = LineParser.parseLine(l, DELIMITER);
                         return SphereCreator.createSphere(list);
                     })
-                    .forEach(spheres::add);
+                    .collect(Collectors.toList());
         } catch (FileReaderException e) {
             LOGGER.log(Level.ERROR, e.getMessage());
             throw new CacheException(e);
@@ -72,8 +70,9 @@ public class SphereCache {
                     try {
                         return s.clone();
                     } catch (CloneNotSupportedException e) {
-                        throw new RuntimeException("Unable to clone object, id = " + s.getId(), e);
+                        LOGGER.log(Level.ERROR, "Can't clone object = " + s);
                     }
+                    return null;
                 })
                 .findAny();
     }
@@ -117,8 +116,6 @@ public class SphereCache {
 
         static {
             try {
-                Object obj = new Object();
-
                 INSTANCE = new SphereCache();
             } catch (CacheException e) {
                 throw new ExceptionInInitializerError(e);

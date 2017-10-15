@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LineParser {
+public final class LineParser {
 
     private LineParser() {
     }

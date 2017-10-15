@@ -3,12 +3,12 @@ package org.martinyuk.sphere.action;
 import org.martinyuk.sphere.entity.Sphere;
 
 
-public class SphereCalculateAction {
+public final class SphereCalculateAction {
 
-    private final double VOLUME_MULTIPLIER = 4D / 3D;
+    private static final double VOLUME_MULTIPLIER = 4D / 3D;
 
-    private final int SURFACE_AREA_EXPONENT = 2;
-    private final int VOLUME_EXPONENT = 3;
+    private static final int SURFACE_AREA_EXPONENT = 2;
+    private static final int VOLUME_EXPONENT = 3;
 
     private SphereCalculateAction() {
     }

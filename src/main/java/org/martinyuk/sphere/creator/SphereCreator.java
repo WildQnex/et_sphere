@@ -11,7 +11,10 @@ import org.martinyuk.sphere.factory.EntityFactory;
 
 import java.util.List;
 
-public class SphereCreator {
+public final class SphereCreator {
+
+    private SphereCreator() {
+    }
 
     private static final Logger LOGGER = LogManager.getLogger(SphereCache.class);
 

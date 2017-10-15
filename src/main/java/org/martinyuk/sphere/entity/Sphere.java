@@ -1,12 +1,9 @@
 package org.martinyuk.sphere.entity;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.martinyuk.sphere.util.IdGenerator;
 
 public class Sphere extends AbstractEntity {
 
-    private static final Logger LOGGER = LogManager.getLogger(Sphere.class);
     private static final int DIAMETER_COEFFICIENT = 2;
 
     private Point center;

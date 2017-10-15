@@ -4,17 +4,6 @@ import org.martinyuk.sphere.util.IdGenerator;
 
 public class Point extends AbstractEntity {
 
-    @Override
-    public Point clone() {
-        Point clone;
-        try {
-            clone = (Point) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new RuntimeException(e);
-        }
-        return clone;
-    }
-
     private double x;
     private double y;
     private double z;
@@ -52,6 +41,13 @@ public class Point extends AbstractEntity {
 
     public void setZ(double z) {
         this.z = z;
+    }
+
+    @Override
+    public Point clone() throws CloneNotSupportedException {
+        Point clone;
+        clone = (Point) super.clone();
+        return clone;
     }
 
     @Override
