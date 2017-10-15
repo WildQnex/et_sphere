@@ -32,7 +32,7 @@ public class SphereCache {
         init(filePath);
     }
 
-    private void init(String filePath) throws CacheException {
+    public void init(String filePath) throws CacheException {
         try {
 
             List<String> lines = FileReader.readLines(filePath);

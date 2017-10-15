@@ -19,4 +19,8 @@ public class SphereIdGenerator {
     public static void stopTest() {
         ifNotTest = true;
     }
+
+    public static void reInit(){
+        id = 1;
+    }
 }

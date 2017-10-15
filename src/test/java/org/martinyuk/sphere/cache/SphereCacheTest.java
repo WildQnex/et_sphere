@@ -1,7 +1,9 @@
 package org.martinyuk.sphere.cache;
 
 import org.martinyuk.sphere.entity.Sphere;
+import org.martinyuk.sphere.exception.CacheException;
 import org.martinyuk.sphere.util.PointIdGenerator;
+import org.martinyuk.sphere.util.SphereIdGenerator;
 import org.testng.annotations.*;
 
 import java.io.BufferedWriter;
@@ -18,45 +20,30 @@ public class SphereCacheTest {
 
     private File file;
     private SphereCache cache;
-    private List<String> list = new ArrayList<>();
 
     @BeforeClass
-    public void setUp() throws IOException {
+    public void setUp() throws IOException, CacheException {
         file = File.createTempFile("tmp", "txt");
         PointIdGenerator.startTest();
+        SphereIdGenerator.reInit();
         file.deleteOnExit();
-        list.add("1.1,1.2,1.3,1.4");
-        list.add("2.1,-41.4,14.5,6.1");
-        list.add("2.1,1.4,14.5,-6.1");
-        list.add("-1.2,4.1,15.1,5");
         try (FileWriter fileWriter = new FileWriter(file.getAbsolutePath());
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-            for (String line : list) {
-                bufferedWriter.write(line + "\n");
-            }
+
+                bufferedWriter.write("1.1,1.2,1.3,1.4\n" +
+                                         "2.1,-41.4,14.5,6.1\n" +
+                                         "2.1,1.4,14.5,-6.1\n" +
+                                         "-1.2,4.1,15.1,5");
+
         }
-        SphereCache.initFilePath(file.getAbsolutePath());
         cache = SphereCache.getInstance();
+        cache.init(file.getAbsolutePath());
     }
 
     @AfterClass
     public void tearDown(){
         PointIdGenerator.stopTest();
     }
-
-    @AfterMethod
-    public void restoreData() {
-        if (cache.readAll().stream().noneMatch(l -> l.getId() == 3)) {
-            cache.create(new Sphere(-1.2, 4.1, 15.1, 5, 3));
-        }
-        if (cache.readAll().stream().anyMatch(s -> s.getRadius() == 10D)) {
-            cache.update(new Sphere(1.1, 1.2, 1.3, 1.4, 1));
-        }
-        if (cache.readAll().stream().anyMatch(l -> l.getId() == 4)) {
-            cache.delete(4);
-        }
-    }
-
 
     @Test
     public void readAllTest() {
@@ -92,6 +79,7 @@ public class SphereCacheTest {
         cache.update(sphere);
         Sphere result = new Sphere(1.1, 1.2, 1.3, 10D, 1);
         assertEquals(cache.readById(1).get(), result);
+        cache.update(new Sphere(1.1, 1.2, 1.3, 1.4, 1));
     }
 
     @Test
@@ -101,17 +89,19 @@ public class SphereCacheTest {
         result.add(new Sphere(1.1, 1.2, 1.3, 1.4, 1));
         result.add(new Sphere(2.1, -41.4, 14.5, 6.1, 2));
         assertEquals(cache.readAll(), result);
+        cache.create(new Sphere(-1.2, 4.1, 15.1, 5, 3));
     }
 
     @Test
     public void createTest() {
-        cache.create(new Sphere(2.1, 1.4, 14.5, -6.1, 4));
+        cache.create(new Sphere(2.1, 1.4, 14.5, 6.1, 4));
         List<Sphere> result = new ArrayList<>();
         result.add(new Sphere(1.1, 1.2, 1.3, 1.4, 1));
         result.add(new Sphere(2.1, -41.4, 14.5, 6.1, 2));
         result.add(new Sphere(-1.2, 4.1, 15.1, 5, 3));
-        result.add(new Sphere(2.1, 1.4, 14.5, -6.1, 4));
+        result.add(new Sphere(2.1, 1.4, 14.5, 6.1, 4));
         assertEquals(cache.readAll(), result);
+        cache.delete(4);
     }
 }
 
