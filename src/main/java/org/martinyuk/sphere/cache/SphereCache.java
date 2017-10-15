@@ -29,6 +29,7 @@ public class SphereCache {
 
     private void init() throws CacheException {
         try {
+
             List<String> lines = FileReader.readLines(FILE_PATH);
             spheres = lines.stream()
                     .filter(LineValidator::validateSphereLine)
@@ -38,7 +39,6 @@ public class SphereCache {
                     })
                     .collect(Collectors.toList());
         } catch (FileReaderException e) {
-            LOGGER.log(Level.ERROR, e.getMessage());
             throw new CacheException(e);
         }
     }

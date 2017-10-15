@@ -19,7 +19,9 @@ public final class SphereCreator {
     private static final Logger LOGGER = LogManager.getLogger(SphereCache.class);
 
     public static Sphere createSphere(List<Double> list) {
-
+        if (list.size() != 4) {
+            return null;
+        }
         try {
             Sphere sphere = (Sphere) EntityFactory.factoryMethod("Sphere");
             Point center = (Point) EntityFactory.factoryMethod("Point");
