@@ -30,10 +30,10 @@ public class SphereCacheTest {
         try (FileWriter fileWriter = new FileWriter(file.getAbsolutePath());
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
 
-                bufferedWriter.write("1.1,1.2,1.3,1.4\n" +
-                                         "2.1,-41.4,14.5,6.1\n" +
-                                         "2.1,1.4,14.5,-6.1\n" +
-                                         "-1.2,4.1,15.1,5");
+            bufferedWriter.write("1.1,1.2,1.3,1.4\n" +
+                    "2.1,-41.4,14.5,6.1\n" +
+                    "2.1,1.4,14.5,-6.1\n" +
+                    "-1.2,4.1,15.1,5");
 
         }
         cache = SphereCache.getInstance();

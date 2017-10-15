@@ -18,18 +18,11 @@ import java.util.stream.Collectors;
 
 public class SphereCache {
 
-    private static String filePath = "data/data.txt";
-
     private static final Logger LOGGER = LogManager.getLogger(SphereCache.class);
     private static final String DELIMITER = ",";
     private List<Sphere> spheres;
 
-    public static void initFilePath(String path) {
-        filePath = path;
-    }
-
     private SphereCache() throws CacheException {
-        init(filePath);
     }
 
     public void init(String filePath) throws CacheException {
