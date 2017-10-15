@@ -1,11 +1,11 @@
 package org.martinyuk.sphere.util;
 
-public class IdGenerator {
+public class PointIdGenerator {
 
     private static boolean ifNotTest = true;
     private static long id = 1;
 
-    private IdGenerator() {
+    private PointIdGenerator() {
     }
 
     public static long nextId() {
@@ -14,5 +14,9 @@ public class IdGenerator {
 
     public static void startTest() {
         ifNotTest = false;
+    }
+
+    public static void stopTest() {
+        ifNotTest = true;
     }
 }

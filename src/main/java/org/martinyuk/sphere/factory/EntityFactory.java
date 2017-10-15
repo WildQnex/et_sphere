@@ -4,7 +4,7 @@ import org.martinyuk.sphere.entity.AbstractEntity;
 import org.martinyuk.sphere.exception.FactoryException;
 
 
-public class EntityFactory {
+public final class EntityFactory {
 
     private EntityFactory() {
     }

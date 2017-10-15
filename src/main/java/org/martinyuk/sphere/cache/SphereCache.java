@@ -18,19 +18,24 @@ import java.util.stream.Collectors;
 
 public class SphereCache {
 
+    private static String filePath = "data/data.txt";
+
     private static final Logger LOGGER = LogManager.getLogger(SphereCache.class);
     private static final String DELIMITER = ",";
-    private static final String FILE_PATH = "data/data.txt";
     private List<Sphere> spheres;
 
-    private SphereCache() throws CacheException {
-        init();
+    public static void initFilePath(String path) {
+        filePath = path;
     }
 
-    private void init() throws CacheException {
+    private SphereCache() throws CacheException {
+        init(filePath);
+    }
+
+    private void init(String filePath) throws CacheException {
         try {
 
-            List<String> lines = FileReader.readLines(FILE_PATH);
+            List<String> lines = FileReader.readLines(filePath);
             spheres = lines.stream()
                     .filter(LineValidator::validateSphereLine)
                     .map(l -> {
@@ -48,7 +53,7 @@ public class SphereCache {
     }
 
 
-    public List<Sphere> getAll() {
+    public List<Sphere> readAll() {
 
         return spheres.stream()
                 .map(s -> {
@@ -63,7 +68,7 @@ public class SphereCache {
     }
 
 
-    public Optional<Sphere> getById(long id) {
+    public Optional<Sphere> readById(long id) {
         return spheres.stream()
                 .filter(s -> s.getId() == id)
                 .map(s -> {

@@ -1,6 +1,6 @@
 package org.martinyuk.sphere.entity;
 
-import org.martinyuk.sphere.util.IdGenerator;
+import org.martinyuk.sphere.util.PointIdGenerator;
 
 public class Point extends AbstractEntity {
 
@@ -9,11 +9,11 @@ public class Point extends AbstractEntity {
     private double z;
 
     public Point() {
-        super(IdGenerator.nextId());
+        super(PointIdGenerator.nextId());
     }
 
     public Point(double x, double y, double z) {
-        super(IdGenerator.nextId());
+        super(PointIdGenerator.nextId());
         this.x = x;
         this.y = y;
         this.z = z;
@@ -78,6 +78,6 @@ public class Point extends AbstractEntity {
 
     @Override
     public String toString() {
-        return "Point (" + x + ", " + y + ", " + z + ')';
+        return "Point(id = " + getId() + ") (" + x + ", " + y + ", " + z + ')';
     }
 }

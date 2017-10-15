@@ -13,12 +13,12 @@ public class SphereDaoImpl implements SphereDao {
 
     @Override
     public List<Sphere> readAll() {
-        return sphereCache.getAll();
+        return sphereCache.readAll();
     }
 
     @Override
     public Optional<Sphere> readById(long id) {
-        return sphereCache.getById(id);
+        return sphereCache.readById(id);
     }
 
     @Override

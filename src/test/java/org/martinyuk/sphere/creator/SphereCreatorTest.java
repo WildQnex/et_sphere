@@ -1,7 +1,8 @@
 package org.martinyuk.sphere.creator;
 
 import org.martinyuk.sphere.entity.Sphere;
-import org.martinyuk.sphere.util.IdGenerator;
+import org.martinyuk.sphere.util.PointIdGenerator;
+import org.martinyuk.sphere.util.SphereIdGenerator;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -15,7 +16,8 @@ public class SphereCreatorTest {
 
     @BeforeClass
     public void setUp() {
-        IdGenerator.startTest();
+        PointIdGenerator.startTest();
+        SphereIdGenerator.startTest();
 
     }
 

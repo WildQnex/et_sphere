@@ -1,6 +1,6 @@
 package org.martinyuk.sphere.entity;
 
-import org.martinyuk.sphere.util.IdGenerator;
+import org.martinyuk.sphere.util.SphereIdGenerator;
 
 public class Sphere extends AbstractEntity {
 
@@ -10,17 +10,23 @@ public class Sphere extends AbstractEntity {
     private double radius;
 
     public Sphere() {
-        super(IdGenerator.nextId());
+        super(SphereIdGenerator.nextId());
     }
 
     public Sphere(Point center, double radius) {
-        super(IdGenerator.nextId());
+        super(SphereIdGenerator.nextId());
         this.center = center;
         this.radius = radius;
     }
 
     public Sphere(double centerX, double centerY, double centerZ, double radius) {
-        super(IdGenerator.nextId());
+        super(SphereIdGenerator.nextId());
+        this.center = new Point(centerX, centerY, centerZ);
+        this.radius = radius;
+    }
+
+    public Sphere(double centerX, double centerY, double centerZ, double radius, long id) {
+        super(id);
         this.center = new Point(centerX, centerY, centerZ);
         this.radius = radius;
     }
@@ -76,7 +82,7 @@ public class Sphere extends AbstractEntity {
 
     @Override
     public String toString() {
-        return "SphereCalculateAction (Central " + center +
+        return "Sphere(id = " + getId() + ") (Central " + center +
                 ", radius = " + radius + ')';
     }
 }
