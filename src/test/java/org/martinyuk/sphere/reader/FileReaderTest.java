@@ -33,11 +33,6 @@ public class FileReaderTest {
         list2.add("4.2,5.2,1.3,6.2");
         list2.add("3.4,5.1,8.2,9.0");
 
-        try {
-            EntityFactory.factoryMethod("Sphere");
-        } catch (FactoryException e) {
-            e.printStackTrace();
-        }
     }
 
     @Test

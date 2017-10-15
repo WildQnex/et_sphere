@@ -3,7 +3,9 @@ package org.martinyuk.sphere.factory;
 import org.martinyuk.sphere.entity.Point;
 import org.martinyuk.sphere.entity.Sphere;
 import org.martinyuk.sphere.exception.FactoryException;
+import org.martinyuk.sphere.util.PointIdGenerator;
 import org.martinyuk.sphere.util.SphereIdGenerator;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -14,6 +16,13 @@ public class EntityFactoryTest {
     @BeforeClass
     public void setUp() {
         SphereIdGenerator.startTest();
+        PointIdGenerator.startTest();
+    }
+
+    @AfterClass
+    public void tearDown(){
+        SphereIdGenerator.stopTest();
+        PointIdGenerator.stopTest();
     }
 
     @Test

@@ -3,6 +3,7 @@ package org.martinyuk.sphere.creator;
 import org.martinyuk.sphere.entity.Sphere;
 import org.martinyuk.sphere.util.PointIdGenerator;
 import org.martinyuk.sphere.util.SphereIdGenerator;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -19,6 +20,12 @@ public class SphereCreatorTest {
         PointIdGenerator.startTest();
         SphereIdGenerator.startTest();
 
+    }
+
+    @AfterClass
+    public void tearDown(){
+        PointIdGenerator.stopTest();
+        SphereIdGenerator.stopTest();
     }
 
     @Test

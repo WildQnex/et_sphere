@@ -2,6 +2,9 @@ package org.martinyuk.sphere.action;
 
 import org.martinyuk.sphere.entity.Point;
 import org.martinyuk.sphere.entity.Sphere;
+import org.martinyuk.sphere.util.PointIdGenerator;
+import org.martinyuk.sphere.util.SphereIdGenerator;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -18,12 +21,19 @@ public class SphereCheckActionTest {
     private SphereCheckAction action = SphereCheckAction.getInstance();
 
     @BeforeClass
-    public void setup() {
+    public void setUp() {
+        SphereIdGenerator.startTest();
+        PointIdGenerator.startTest();
         point1 = new Point(3, 3, 3);
         sphere1 = new Sphere(point1, 3);
         sphere2 = new Sphere(point1, 4);
     }
 
+    @AfterClass
+    public void tearDown(){
+        SphereIdGenerator.stopTest();
+        PointIdGenerator.stopTest();
+    }
 
     @Test
     public void isSphereTrueTest() {

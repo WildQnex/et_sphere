@@ -2,9 +2,7 @@ package org.martinyuk.sphere.cache;
 
 import org.martinyuk.sphere.entity.Sphere;
 import org.martinyuk.sphere.util.PointIdGenerator;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -41,16 +39,20 @@ public class SphereCacheTest {
         cache = SphereCache.getInstance();
     }
 
+    @AfterClass
+    public void tearDown(){
+        PointIdGenerator.stopTest();
+    }
 
     @AfterMethod
     public void restoreData() {
-        if (cache.readAll().size() == 2) {
+        if (cache.readAll().stream().noneMatch(l -> l.getId() == 3)) {
             cache.create(new Sphere(-1.2, 4.1, 15.1, 5, 3));
         }
         if (cache.readAll().stream().anyMatch(s -> s.getRadius() == 10D)) {
             cache.update(new Sphere(1.1, 1.2, 1.3, 1.4, 1));
         }
-        if (cache.readAll().size() == 4) {
+        if (cache.readAll().stream().anyMatch(l -> l.getId() == 4)) {
             cache.delete(4);
         }
     }
