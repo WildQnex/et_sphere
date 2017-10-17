@@ -22,7 +22,7 @@ public class SphereCache {
     private static final String DELIMITER = ",";
     private List<Sphere> spheres;
 
-    private SphereCache() throws CacheException {
+    private SphereCache() {
     }
 
     public void init(String filePath) throws CacheException {
@@ -113,11 +113,7 @@ public class SphereCache {
         private static final SphereCache INSTANCE;
 
         static {
-            try {
-                INSTANCE = new SphereCache();
-            } catch (CacheException e) {
-                throw new ExceptionInInitializerError(e);
-            }
+            INSTANCE = new SphereCache();
         }
     }
 }

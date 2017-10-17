@@ -11,6 +11,7 @@ public class Sphere extends AbstractEntity {
 
     public Sphere() {
         super(SphereIdGenerator.nextId());
+        this.center = new Point();
     }
 
     public Sphere(Point center, double radius) {

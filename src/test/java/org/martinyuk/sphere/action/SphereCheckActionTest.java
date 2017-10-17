@@ -30,7 +30,7 @@ public class SphereCheckActionTest {
     }
 
     @AfterClass
-    public void tearDown(){
+    public void tearDown() {
         SphereIdGenerator.stopTest();
         PointIdGenerator.stopTest();
     }

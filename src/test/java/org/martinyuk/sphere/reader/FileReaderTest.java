@@ -1,11 +1,6 @@
 package org.martinyuk.sphere.reader;
 
-import org.martinyuk.sphere.cache.SphereCache;
-import org.martinyuk.sphere.exception.FactoryException;
 import org.martinyuk.sphere.exception.FileReaderException;
-import org.martinyuk.sphere.factory.EntityFactory;
-import org.martinyuk.sphere.util.PointIdGenerator;
-import org.martinyuk.sphere.util.SphereIdGenerator;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -36,8 +31,8 @@ public class FileReaderTest {
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
 
             bufferedWriter.write("2.5,6.3,6.1,3.6\n" +
-                                     "4.2,5.2,4.3,6.2\n" +
-                                     "3.4,5.7,8.2,9.0\n");
+                    "4.2,5.2,4.3,6.2\n" +
+                    "3.4,5.7,8.2,9.0\n");
         }
         errorMessage = "File wasn't found, file path = " + FILE2;
     }

@@ -40,7 +40,7 @@ public class SphereCalculateActionTest {
     }
 
     @AfterClass
-    public void tearDown(){
+    public void tearDown() {
         SphereIdGenerator.stopTest();
         PointIdGenerator.stopTest();
     }

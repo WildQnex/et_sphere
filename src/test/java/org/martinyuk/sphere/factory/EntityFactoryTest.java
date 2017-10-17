@@ -20,7 +20,7 @@ public class EntityFactoryTest {
     }
 
     @AfterClass
-    public void tearDown(){
+    public void tearDown() {
         SphereIdGenerator.stopTest();
         PointIdGenerator.stopTest();
     }

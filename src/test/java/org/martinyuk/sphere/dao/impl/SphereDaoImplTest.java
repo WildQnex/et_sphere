@@ -7,7 +7,6 @@ import org.martinyuk.sphere.exception.CacheException;
 import org.martinyuk.sphere.util.PointIdGenerator;
 import org.martinyuk.sphere.util.SphereIdGenerator;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -18,7 +17,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotEquals;
 
 public class SphereDaoImplTest {
 
@@ -44,7 +44,7 @@ public class SphereDaoImplTest {
     }
 
     @AfterClass
-    public void tearDown(){
+    public void tearDown() {
         PointIdGenerator.stopTest();
     }
 

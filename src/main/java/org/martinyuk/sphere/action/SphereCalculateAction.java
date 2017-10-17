@@ -3,7 +3,7 @@ package org.martinyuk.sphere.action;
 import org.martinyuk.sphere.entity.Sphere;
 
 
-public final class SphereCalculateAction {
+public class SphereCalculateAction {
 
     private static final double VOLUME_MULTIPLIER = 4D / 3D;
 
@@ -75,7 +75,8 @@ public final class SphereCalculateAction {
             positiveHeight = radius - center;
         }
         final double SEGMENT_VOLUME_DIVIDER = 3D;
-        double positiveSegmentVolume = Math.PI * Math.pow(positiveHeight, SURFACE_AREA_EXPONENT) * (radius - positiveHeight / SEGMENT_VOLUME_DIVIDER);
+        double positiveSegmentVolume = Math.PI * Math.pow(positiveHeight, SURFACE_AREA_EXPONENT) *
+                (radius - positiveHeight / SEGMENT_VOLUME_DIVIDER);
 
         return positiveSegmentVolume / (calculateVolume(radius) - positiveSegmentVolume);
     }

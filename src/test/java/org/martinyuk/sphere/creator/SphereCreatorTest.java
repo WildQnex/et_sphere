@@ -23,7 +23,7 @@ public class SphereCreatorTest {
     }
 
     @AfterClass
-    public void tearDown(){
+    public void tearDown() {
         PointIdGenerator.stopTest();
         SphereIdGenerator.stopTest();
     }

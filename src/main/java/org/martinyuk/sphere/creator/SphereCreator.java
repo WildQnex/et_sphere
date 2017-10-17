@@ -3,7 +3,6 @@ package org.martinyuk.sphere.creator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.martinyuk.sphere.cache.SphereCache;
 import org.martinyuk.sphere.entity.Point;
 import org.martinyuk.sphere.entity.Sphere;
 import org.martinyuk.sphere.exception.FactoryException;
@@ -16,7 +15,7 @@ public final class SphereCreator {
     private SphereCreator() {
     }
 
-    private static final Logger LOGGER = LogManager.getLogger(SphereCache.class);
+    private static final Logger LOGGER = LogManager.getLogger(SphereCreator.class);
 
     public static Sphere createSphere(List<Double> list) {
         if (list.size() != 4) {

@@ -3,7 +3,7 @@ package org.martinyuk.sphere.action;
 import org.martinyuk.sphere.entity.AbstractEntity;
 import org.martinyuk.sphere.entity.Sphere;
 
-public final class SphereCheckAction {
+public class SphereCheckAction {
 
     private static final double ACCURACY = 0.00001;
 

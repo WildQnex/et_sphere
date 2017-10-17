@@ -3,13 +3,13 @@ package org.martinyuk.sphere.util;
 public class SphereIdGenerator {
 
     private static boolean ifNotTest = true;
-    private static long id = 1;
+    private static long sphereId = 1;
 
     private SphereIdGenerator() {
     }
 
     public static long nextId() {
-        return (ifNotTest) ? id++ : id;
+        return (ifNotTest) ? sphereId++ : sphereId;
     }
 
     public static void startTest() {
@@ -20,7 +20,7 @@ public class SphereIdGenerator {
         ifNotTest = true;
     }
 
-    public static void reInit(){
-        id = 1;
+    public static void reInit() {
+        sphereId = 1;
     }
 }

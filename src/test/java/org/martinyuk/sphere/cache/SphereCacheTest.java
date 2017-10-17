@@ -4,7 +4,9 @@ import org.martinyuk.sphere.entity.Sphere;
 import org.martinyuk.sphere.exception.CacheException;
 import org.martinyuk.sphere.util.PointIdGenerator;
 import org.martinyuk.sphere.util.SphereIdGenerator;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -41,7 +43,7 @@ public class SphereCacheTest {
     }
 
     @AfterClass
-    public void tearDown(){
+    public void tearDown() {
         PointIdGenerator.stopTest();
     }
 
