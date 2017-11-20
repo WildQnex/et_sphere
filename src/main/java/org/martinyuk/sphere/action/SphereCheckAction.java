@@ -10,16 +10,9 @@ public class SphereCheckAction {
     private SphereCheckAction() {
     }
 
-    public static SphereCheckAction getInstance() {
-        return SphereCheckAction.SingletonHolder.INSTANCE;
-    }
 
     public boolean isSphere(AbstractEntity shape) {
-        if (shape instanceof Sphere) {
-            return ((Sphere) shape).getRadius() > 0;
-        } else {
-            return false;
-        }
+        return shape instanceof Sphere && ((Sphere) shape).getRadius() > 0;
     }
 
     public boolean isSphereTouchesPlaneXY(Sphere sphere) {
@@ -32,6 +25,10 @@ public class SphereCheckAction {
 
     public boolean isSphereTouchesPlaneYZ(Sphere sphere) {
         return Math.abs(Math.abs(sphere.getCenter().getX()) - sphere.getRadius()) < ACCURACY;
+    }
+
+    public static SphereCheckAction getInstance() {
+        return SphereCheckAction.SingletonHolder.INSTANCE;
     }
 
     private static class SingletonHolder {

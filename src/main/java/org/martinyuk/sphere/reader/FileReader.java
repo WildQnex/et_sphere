@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FileReader {
 
@@ -15,18 +15,13 @@ public class FileReader {
     }
 
     public static List<String> readLines(String filePath) throws FileReaderException {
-
-        List<String> list = new ArrayList<>();
-
         try {
-            Files.lines(Paths.get(filePath)).forEach(list::add);
+            return Files.lines(Paths.get(filePath)).collect(Collectors.toList());
         } catch (NoSuchFileException e) {
             throw new FileReaderException("File wasn't found, file path = " + filePath, e);
         } catch (IOException e) {
             throw new FileReaderException("Can't open file, file path = " + filePath, e);
         }
-
-        return list;
     }
 
 }

@@ -41,11 +41,6 @@ public class SphereCache {
         }
     }
 
-    public static SphereCache getInstance() {
-        return SphereCache.SingletonHolder.INSTANCE;
-    }
-
-
     public List<Sphere> readAll() {
 
         return spheres.stream()
@@ -55,7 +50,7 @@ public class SphereCache {
                     } catch (CloneNotSupportedException e) {
                         LOGGER.log(Level.ERROR, "Can't clone object = " + s);
                     }
-                    return null;
+                    return s;
                 })
                 .collect(Collectors.toList());
     }
@@ -107,6 +102,10 @@ public class SphereCache {
         }
         spheres.add(entity);
         return true;
+    }
+
+    public static SphereCache getInstance() {
+        return SphereCache.SingletonHolder.INSTANCE;
     }
 
     private static class SingletonHolder {

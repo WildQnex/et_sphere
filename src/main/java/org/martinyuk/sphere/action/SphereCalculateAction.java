@@ -13,10 +13,6 @@ public class SphereCalculateAction {
     private SphereCalculateAction() {
     }
 
-    public static SphereCalculateAction getInstance() {
-        return SingletonHolder.INSTANCE;
-    }
-
     public double calculateSurfaceArea(Sphere sphere) {
         final double SURFACE_AREA_MULTIPLIER = 4D;
         return SURFACE_AREA_MULTIPLIER * Math.PI * Math.pow(sphere.getRadius(), SURFACE_AREA_EXPONENT);
@@ -83,6 +79,10 @@ public class SphereCalculateAction {
 
     private double calculateVolume(double radius) {
         return VOLUME_MULTIPLIER * Math.PI * Math.pow(radius, VOLUME_EXPONENT);
+    }
+
+    public static SphereCalculateAction getInstance() {
+        return SingletonHolder.INSTANCE;
     }
 
     private static class SingletonHolder {

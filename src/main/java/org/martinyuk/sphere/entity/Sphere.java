@@ -1,6 +1,11 @@
 package org.martinyuk.sphere.entity;
 
+import org.martinyuk.sphere.observer.OperationObserver;
 import org.martinyuk.sphere.util.SphereIdGenerator;
+
+import java.util.ArrayList;
+import java.util.EventObject;
+import java.util.List;
 
 public class Sphere extends AbstractEntity {
 
@@ -8,6 +13,7 @@ public class Sphere extends AbstractEntity {
 
     private Point center;
     private double radius;
+    private List<OperationObserver> observerList = new ArrayList<>();
 
     public Sphere() {
         super(SphereIdGenerator.nextId());
@@ -50,7 +56,19 @@ public class Sphere extends AbstractEntity {
 
     public void setRadius(double radius) {
         this.radius = radius;
+        notifyObservers();
     }
+
+    public void addObserver(OperationObserver observer) {
+        observerList.add(observer);
+    }
+
+    private void notifyObservers() {
+        for (OperationObserver observer : observerList){
+            observer.valueChanged(new EventObject(this));
+        }
+    }
+
 
     @Override
     public Sphere clone() throws CloneNotSupportedException {
